@@ -19,7 +19,7 @@ function setup() {
   imageMode(CENTER);
   x = windowWidth;
   y = windowHeight;
-  d = 100;
+  d = windowHeight*0.75;
   i = 1;
   a = 2;
 
@@ -32,13 +32,14 @@ function draw() {
 }
 
 function splitCircle(){
-  while (i > a){
-    circle( x/2, y/2, windowHeight*0.75);
+  while (i < 2){
+    circle( x/2, y/2, d);
+    x = x/2;
+    y = y/2;
+    d/2;
     i ++;
   }
   
-
-
 }
 
 function mouseClicked(){
