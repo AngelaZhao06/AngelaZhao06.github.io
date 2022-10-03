@@ -17,11 +17,9 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   imageMode(CENTER);
-  x = windowWidth;
-  y = windowHeight;
+  x = windowWidth/2;
+  y = windowHeight/2;
   d = windowHeight*0.75;
-  i = 1;
-  a = 2;
 
 }
 
@@ -32,12 +30,8 @@ function draw() {
 }
 
 function splitCircle(){
-  while (i < 2){
-    circle( x/2, y/2, d);
-    x = x/2;
-    y = y/2;
-    d/2;
-    i ++;
+  for (i = 1; i < 2; i ++){
+    circle(x)
   }
   
 }
