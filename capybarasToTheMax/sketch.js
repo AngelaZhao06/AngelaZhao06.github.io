@@ -27,6 +27,7 @@ function setup() {
 
 function draw() {
   splitCircle();
+  
   // image(img, width/2, height/2); 
 }
 
@@ -37,7 +38,7 @@ function drawCircle(circle){
 function splitCircle(){
   for (let i = 0; i < circles.length; i ++){
     const circle = circles[i];
-    if (!circle.split && dist(mouseX, mouseY, circle.x, circle.y) < circle.r && circle.r > 5){
+    if (!circle.split && mouseInsideCircle(mouseX, mouseY, circle.x, circle.y, circle.r)){
       circle.split = true;
       let circle_1 = {
         x: circle.x - circle.r/2,
@@ -73,6 +74,6 @@ function splitCircle(){
   }
 }
 
-// function mouseInsideCircle(left, right, top, bottom){
-//   return dist(mouseX, mouseY, circle.x, circle.y) < circle.r && circle > 5;
-// }
+function mouseInsideCircle(mouseX, mouseY, circleX, circleY, circleR){
+  return dist(mouseX, mouseY, circleX, circleY) < circleR && circleR > 5;
+}
