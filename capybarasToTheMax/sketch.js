@@ -5,30 +5,30 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
+let circles;
 let circle_1, circle_2, circle_3, circle_4; 
+let x, y, r;
+let avgColor;
+let img;
 
-const circles = [{
-  x:200, y:200, r:200 
-}];
 
 
 function preload() {
-  //img = loadImage("capybara.jfif");
+  img = loadImage("capybara.jfif");
   createCanvas(windowWidth, windowHeight);
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  circles = [{x:width/2, y:height/2, r:height/2}];
   imageMode(CENTER);
-  background("white");
+  fill(getAvgColor());
   drawCircle(circles[0]);
   
 }
 
 function draw() {
-  splitCircle();
-  
-  // image(img, width/2, height/2); 
+  //splitCircle();
 }
 
 function drawCircle(circle){
@@ -60,7 +60,7 @@ function splitCircle(){
         y: circle.y + circle.r/2,
         r: circle.r/2
       };
-      
+
       circles.push(circle_1);
       circles.push(circle_2);
       circles.push(circle_3);
@@ -75,5 +75,10 @@ function splitCircle(){
 }
 
 function mouseInsideCircle(mouseX, mouseY, circleX, circleY, circleR){
-  return dist(mouseX, mouseY, circleX, circleY) < circleR && circleR > 5;
+  return dist(mouseX, mouseY, circleX, circleY) < circleR && circleR > 2;
+}
+
+function getAvgColor(){
+  return avgColor = img.get(width/2, height/2);
+  
 }
