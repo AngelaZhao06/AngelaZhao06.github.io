@@ -20,15 +20,15 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  circles = [{x:width/2, y:height/2, r:height/2}];
-  imageMode(CENTER);
-  fill(getAvgColor());
+  circles = [{x:width/2, y:height/2, r:height/2.5}];
+  imageMode(CORNERS);
+  fill(getAvgColor(width, height));
   drawCircle(circles[0]);
   
 }
 
 function draw() {
-  //splitCircle();
+  splitCircle();
 }
 
 function drawCircle(circle){
@@ -66,19 +66,22 @@ function splitCircle(){
       circles.push(circle_3);
       circles.push(circle_4);
       
+      fill(getAvgColor(circle_1.x, circle_1.y));
       drawCircle(circle_1);
+      fill(getAvgColor(circle_2.x, circle_2.y));
       drawCircle(circle_2);
+      fill(getAvgColor(circle_3.x, circle_3.y));
       drawCircle(circle_3);
+      fill(getAvgColor(circle_4.x, circle_4.y));
       drawCircle(circle_4);
     }   
   }
 }
 
 function mouseInsideCircle(mouseX, mouseY, circleX, circleY, circleR){
-  return dist(mouseX, mouseY, circleX, circleY) < circleR && circleR > 2;
+  return dist(mouseX, mouseY, circleX, circleY) < circleR && circleR > 6;
 }
 
-function getAvgColor(){
-  return avgColor = img.get(width/2, height/2);
-  
+function getAvgColor(x, y){
+  return avgColor = img.get(x/2.5, y/2);
 }
