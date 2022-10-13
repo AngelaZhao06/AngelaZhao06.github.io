@@ -84,7 +84,7 @@ function mouseInsideCircle(mouseX, mouseY, circleX, circleY, circleR){
 }
 
 function getAvgColor(x, y){
-  return avgColor = img.get(x/2.5, y/2);
+  return avgColor = img.get(x/2.5, y/1.5);
 }
 
 function keyPressed() {
