@@ -1,11 +1,11 @@
-// Project Title
-// Your Name
-// Date
+// Capybaras To The Max 
+// Angela Zhao
+// 13/10/2022
 //
 // Extra for Experts:
-// - describe what you did to take this project "above and beyond"
+//Vine Boom sound effect everytime you press r
 
-let circles;
+let circles, circle;
 let circle_1, circle_2, circle_3, circle_4; 
 let x, y, r;
 let avgColor;
@@ -19,6 +19,7 @@ function preload() {
 }
 
 function setup() {
+  vineBoom = loadSound('vineBoom.m4a');
   createCanvas(windowWidth, windowHeight);
   circles = [{x:width/2, y:height/2, r:height/2.5}];
   imageMode(CORNERS);
@@ -37,7 +38,7 @@ function drawCircle(circle){
 
 function splitCircle(){
   for (let i = 0; i < circles.length; i ++){
-    const circle = circles[i];
+    circle = circles[i];
     if (!circle.split && mouseInsideCircle(mouseX, mouseY, circle.x, circle.y, circle.r)){
       circle.split = true;
       let circle_1 = {
@@ -84,4 +85,14 @@ function mouseInsideCircle(mouseX, mouseY, circleX, circleY, circleR){
 
 function getAvgColor(x, y){
   return avgColor = img.get(x/2.5, y/2);
+}
+
+function keyPressed() {
+  if (key === 'r') {
+    background(255);
+    vineBoom.play();
+    fill(getAvgColor(width, height));
+    drawCircle(circles[0]);
+    circles = [{x:width/2, y:height/2, r:height/2.5}];
+  }
 }
