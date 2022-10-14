@@ -5,24 +5,25 @@
 // Extra for Experts:
 //Vine Boom sound effect everytime you press r
 
-let circles, circle;
+let circles;
 let circle_1, circle_2, circle_3, circle_4; 
 let x, y, r;
 let avgColor;
 let img;
+let vineBoom;
 
 
 
 function preload() {
   img = loadImage("capybara.jfif");
+  vineBoom = loadSound("vineBoom.m4a");
   createCanvas(windowWidth, windowHeight);
 }
 
 function setup() {
-  vineBoom = loadSound('vineBoom.m4a');
+  
   createCanvas(windowWidth, windowHeight);
   circles = [{x:width/2, y:height/2, r:height/2.5}];
-  imageMode(CORNERS);
   fill(getAvgColor(width, height));
   drawCircle(circles[0]);
   
@@ -36,13 +37,14 @@ function drawCircle(circle){
   ellipse(circle.x, circle.y, circle.r * 2, circle.r * 2);
 }
 
-function splitCircle(){
+function splitCircle(){ 
   for (let i = 0; i < circles.length; i ++){
     circle = circles[i];
-    if (!circle.split && mouseInsideCircle(mouseX, mouseY, circle.x, circle.y, circle.r)){
+    if (!circle.split && mouseInsideCircle(mouseX, mouseY, circle.x, circle.y, circle.r)){ 
+      //if circle radius is bigger than 6 and mouse is inside circle then split circle 
       circle.split = true;
       let circle_1 = {
-        x: circle.x - circle.r/2,
+        x: circle.x - circle.r/2, 
         y: circle.y - circle.r/2,
         r: circle.r/2
       };
@@ -88,7 +90,7 @@ function getAvgColor(x, y){
 }
 
 function keyPressed() {
-  if (key === 'r') {
+  if (key === "r") {
     background(255);
     vineBoom.play();
     fill(getAvgColor(width, height));
