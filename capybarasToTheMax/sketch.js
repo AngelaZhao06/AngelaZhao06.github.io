@@ -82,7 +82,7 @@ function splitCircle(){
 }
 
 function mouseInsideCircle(mouseX, mouseY, circleX, circleY, circleR){
-  return dist(mouseX, mouseY, circleX, circleY) < circleR && circleR > 6;
+  return dist(mouseX, mouseY, circleX, circleY) < circleR && circleR > 3;
 }
 
 function getAvgColor(x, y){
