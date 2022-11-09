@@ -17,11 +17,14 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   // checkeredGrid = checkeredArray(COLS, ROWS);
   minesGrid = createRandom2dArray(COLS, ROWS);
+  checkeredGrid = checkeredArray(COLS, ROWS);
 }
 
 function draw() {
   background(220);
+  displayGrid(checkeredGrid);
   checkMines(minesGrid);
+  
 }
 
 
@@ -34,7 +37,7 @@ function displayGrid(grid) {
       else if (grid[y][x] === 1) {
         fill("#000000");
       } 
-      // stroke("#A2D149");
+      stroke("#A2D149");
       rect(x*cellWidth + width/3.5 , y*cellHeight + 50, cellWidth, cellHeight);
 
     }
@@ -69,31 +72,32 @@ function create2dArray(COLS, ROWS) {
 }
 
 function checkMines(grid) {
-  let displayMines = create2dArray(COLS, ROWS);
   
   for (let y=0; y<ROWS; y++) {
-    for (let x=0; x<COLS; x++) {
+    for (let x =0; x<COLS; x++) {
       let mines = 0;
-  
-      //look at all cells around this one...
       for (let i=-1; i<=1; i++) {
         for (let j=-1; j<=1; j++) {
-          //edge case check
           if (y+i >= 0 && y+i < ROWS && x+j >= 0 && x+j < COLS) {
-            if (grid[y+i][x+j]=== 1){
-              mines ++;
-            }
+            mines += grid[y+i][x+j];
           }
         }
       }
-  
-      //don't count self!
       mines -= grid[y][x];
-      text(mines, x*cellWidth + width/3.5 , y*cellHeight + 50);
-    } 
-    
-  }
-}
+      textSize(30);
+      
+      if(grid[y][x]=== 1){
+        fill("red");
+        text("❄︎", x*cellWidth + width/3.5 + 13 , y*cellHeight + 90);
+      }
+      else {
+        fill("red");
+        text(mines, x*cellWidth + width/3.5 + 13 , y*cellHeight + 90);
+      } 
+    }
+  } 
+} 
+
 
 function checkeredArray(COLS, ROWS) {
   let emptyArray = [];
