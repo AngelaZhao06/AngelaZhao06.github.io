@@ -119,4 +119,7 @@ function checkeredArray(COLS, ROWS) {
   return emptyArray;
 }
  
-
+function mousePressed(){
+  let xPos = Math.floor(mouseX/cellWidth + width/3.5 + 13 );
+  let yPos = Math.floor(mouseY/cellHeight + 90);
+}
