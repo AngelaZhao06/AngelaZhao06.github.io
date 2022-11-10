@@ -15,16 +15,14 @@ let mines;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  // checkeredGrid = checkeredArray(COLS, ROWS);
   minesGrid = createRandom2dArray(COLS, ROWS);
   checkeredGrid = checkeredArray(COLS, ROWS);
 }
 
 function draw() {
   background(220);
-  displayGrid(checkeredGrid);
   checkMines(minesGrid);
-  
+  displayGrid(checkeredGrid);
 }
 
 
@@ -35,10 +33,10 @@ function displayGrid(grid) {
         fill("#A2D149");
       }
       else if (grid[y][x] === 1) {
-        fill("#000000");
+        fill("#A7D948");
       } 
       stroke("#A2D149");
-      rect(x*cellWidth + width/3.5 , y*cellHeight + 50, cellWidth, cellHeight);
+      rect(x*cellWidth , y*cellHeight, cellWidth, cellHeight);
 
     }
   }
@@ -88,11 +86,11 @@ function checkMines(grid) {
       
       if(grid[y][x]=== 1){
         fill("red");
-        text("❄︎", x*cellWidth + width/3.5 + 13 , y*cellHeight + 90);
+        text("❄︎", x*cellWidth, y*cellHeight+cellHeight);
       }
       else {
         fill("red");
-        text(mines, x*cellWidth + width/3.5 + 13 , y*cellHeight + 90);
+        text(mines, x*cellWidth , y*cellHeight+cellHeight);
       } 
     }
   } 
@@ -119,4 +117,15 @@ function checkeredArray(COLS, ROWS) {
   return emptyArray;
 }
  
+function mousePressed(){
+  let xPos = Math.floor(mouseX/cellWidth);
+  let yPos = Math.floor(mouseY/cellHeight);
+
+  if (grid[yPos][xPos] === 0) {
+    grid[yPos][xPos] = 1;
+  }
+  else if (grid[yPos][xPos] === 1) {
+    grid[yPos][xPos] = 0;
+  }
+}
 
