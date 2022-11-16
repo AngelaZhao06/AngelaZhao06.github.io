@@ -258,3 +258,80 @@ function createRandom2dArray(COLS, ROWS) {
   }
   return emptyArray;
 }
+<<<<<<< HEAD
+=======
+
+function create2dArray(COLS, ROWS) {
+  let emptyArray = [];
+  for (let y=0; y<ROWS; y++) {
+    emptyArray.push([]);
+    for (let x=0; x<COLS; x++) {
+      emptyArray[y].push(0);
+    }
+  }
+  return emptyArray;
+}
+
+function checkMines(grid) {
+  
+  for (let y=0; y<ROWS; y++) {
+    for (let x =0; x<COLS; x++) {
+      let mines = 0;
+      for (let i=-1; i<=1; i++) {
+        for (let j=-1; j<=1; j++) {
+          if (y+i >= 0 && y+i < ROWS && x+j >= 0 && x+j < COLS) {
+            mines += grid[y+i][x+j];
+          }
+        }
+      }
+      mines -= grid[y][x];
+      textSize(30);
+      
+      if(grid[y][x]=== 1){
+        fill("red");
+        text("❄︎", x*cellWidth, y*cellHeight+cellHeight);
+      }
+      else {
+        fill("red");
+        text(mines, x*cellWidth , y*cellHeight+cellHeight);
+      } 
+    }
+  } 
+} 
+
+
+function checkeredArray(COLS, ROWS) {
+  let emptyArray = [];
+  let white = true;
+  for (let y=0; y<ROWS; y++) {
+    emptyArray.push([]);
+    for (let x=0; x<COLS; x++) {
+      if (white === true) {
+        emptyArray[y].push(0);
+        white =! white;
+      }
+      else {
+        emptyArray[y].push(1);
+        white = true;
+      }
+    }
+    white =! white;
+  }
+  return emptyArray;
+}
+ 
+function mousePressed(){
+  let xPos = Math.floor(mouseX/cellWidth);
+  let yPos = Math.floor(mouseY/cellHeight + 90);
+
+  if (minesGrid[yPos][xPos] === 0) {
+    fill("red"); 
+    text(mines, xPos*cellWidth , yPos*cellHeight+cellHeight);
+    
+  }
+  else if (minesGrid[yPos][xPos] === 1) {
+    fill("red");
+    text("❄︎", xPos*cellWidth, yPos*cellHeight+cellHeight);
+  }
+}
+>>>>>>> 99f207741103204f344df1e9da26e4d9a0a40abc
