@@ -3,8 +3,8 @@
 // Date
 //
 // Extra for Experts:
-// Used video tutorials from "The Coding Train" https://www.youtube.com/watch?v=LFU5ZlrR21E&t=709s &  "Code with Ania Kubów", I leared OOP and continue. 
-// I also included images of mines. There is a function to detect if there is a win.
+// Using video tutorials from "The Coding Train" https://www.youtube.com/watch?v=LFU5ZlrR21E&t=709s &  "Code with Ania Kubów", I leared OOP and continue.
+// I also included images of mines. There is a function to detect if there is a win but it may be faulty.
 // You should be able to place flags using rightclick, placeFlag was working previously but that seems to have changed
 let grid;
 let checkerboard;
